@@ -1,0 +1,28 @@
+version: "7"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - postgres-network
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: docker_node_api
+
+  nodedocker:
+    image: tarun200109/nodedocker:v7
+    restart: always
+
+    ports:
+      - 4000:4000
+    networks:
+      - postgres-network
+    depends_on:
+      - postgres
+
+networks:
+  postgres-network:
+    driver: bridge
