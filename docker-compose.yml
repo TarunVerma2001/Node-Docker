@@ -1,4 +1,4 @@
-version: "7"
+version: "10"
 
 services:
   postgres:
@@ -13,7 +13,7 @@ services:
       POSTGRES_DB: docker_node_api
 
   nodedocker:
-    image: tarun200109/nodedocker:v7
+    image: tarun200109/nodedocker:v10
     restart: always
 
     ports:
